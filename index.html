@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Anum 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+    }
+    #countdown-screen {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .countdown-number {
+      font-size: 100px;
+      color: #ff4081;
+    }
+    #music-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #fff;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 999;
+    }
+    canvas#fireworks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    }
+    .cube-scene {
+      width: 300px;
+      height: 300px;
+      margin: 100px auto 30px auto;
+      perspective: 1000px;
+    }
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotateCube 20s infinite linear;
+    }
+    .cube-face {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #fff;
+    }
+    .front  { transform: translateZ(150px); background-image: url('images/anum1.jpg'); }
+    .back   { transform: rotateY(180deg) translateZ(150px); background-image: url('images/anum2.jpg'); }
+    .right  { transform: rotateY(90deg) translateZ(150px); background-image: url('images/anum3.jpg'); }
+    .left   { transform: rotateY(-90deg) translateZ(150px); background-image: url('images/anum4.jpg'); }
+    .top    { transform: rotateX(90deg) translateZ(150px); background-image: url('images/anum5.jpg'); }
+    .bottom { transform: rotateX(-90deg) translateZ(150px); background-image: url('images/anum6.jpg'); }
+    @keyframes rotateCube {
+      from { transform: rotateX(-20deg) rotateY(0); }
+      to { transform: rotateX(-20deg) rotateY(360deg); }
+    }
+    .flip-ring {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .flip-photo {
+      width: 150px;
+      height: 150px;
+      perspective: 1000px;
+    }
+    .flip-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+    }
+    .flip-photo:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      background-size: cover;
+      background-position: center;
+      border: 2px solid white;
+    }
+    .flip-front {
+      background-image: url('images/anum7.jpg');
+    }
+    .flip-back {
+      background-image: url('images/anum8.jpg');
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown-screen">
+    <div class="countdown-number" id="countdown-number">10</div>
+  </div>
+
+  <canvas id="fireworks"></canvas>
+  <audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <button id="music-toggle">🔊</button>
+
+  <div class="cube-scene">
+    <div class="cube">
+      <div class="cube-face front"></div>
+      <div class="cube-face back"></div>
+      <div class="cube-face right"></div>
+      <div class="cube-face left"></div>
+      <div class="cube-face top"></div>
+      <div class="cube-face bottom"></div>
+    </div>
+  </div>
+
+  <div class="flip-ring">
+    <div class="flip-photo">
+      <div class="flip-inner">
+        <div class="flip-front"></div>
+        <div class="flip-back"></div>
+      </div>
+    </div>
+    <div class="flip-photo">
+      <div class="flip-inner">
+        <div class="flip-front" style="background-image: url('images/anum9.jpg');"></div>
+        <div class="flip-back" style="background-image: url('images/anum10.jpg');"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
